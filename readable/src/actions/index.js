@@ -1,0 +1,136 @@
+export const GET_ALL_POSTS = 'GET_ALL_POST';
+export const GET_CATEGORY_POSTS = 'GET_CATEGORY_POSTS';
+export const GET_SINGLE_POST = 'GET_SINGLE_POST';
+export const ADD_NEW_POST = 'ADD_NEW_POST';
+export const EDIT_POST = 'EDIT_POST';
+export const DELETE_POST = 'DELETE_POST';
+export const UP_VOTE_POST = 'UP_VOTE_POST';
+export const DOWN_VOTE_POST = 'DOWN_VOTE_POST';
+
+export const getAllPosts = () => {
+	return (dispatch) => {
+
+		const postsFetchConfigs = {
+			method: 'GET',
+			headers: {
+				'Authorization': 'key',
+				'Content-Type': 'application/json'
+			}
+		};
+
+		fetch("http://localhost:5001/posts", postsFetchConfigs)
+			.then(response => response.json())
+			.then(data => {
+				console.log('Posts fetched', data);
+				dispatch({
+					type: GET_ALL_POSTS,
+					posts: data
+				})
+			});
+	}
+};
+
+export const getCategoryPosts = (category) => {
+	return (dispatch) => {
+
+		const categoryPostsFetchConfigs = {
+			method: 'GET',
+			headers: {
+				'Authorization': 'key',
+				'Content-Type': 'application/json'
+			}
+		};
+
+		fetch(`http://localhost:5001/${category}/posts`, categoryPostsFetchConfigs)
+			.then(response => response.json())
+			.then(data => {
+				console.log('Category posts fetched', data);
+				dispatch({
+					type: GET_CATEGORY_POSTS,
+					posts: data
+				})
+			});
+	}
+};
+
+export const getSinglePost = (postID) => {
+	return (dispatch) => {
+		
+		const singlePostFetchConfigs = {
+			method: 'GET',
+			headers: {
+				'Authorization': 'key',
+				'Content-Type': 'application/json'
+			}
+		};
+
+		fetch(`http://localhost:5001/posts/${postID}`, singlePostFetchConfigs)
+			.then(response => response.json())
+			.then(data => {
+				console.log('Single posts fetched', data);
+				dispatch({
+					type: GET_SINGLE_POST,
+					post: data
+				})
+			});
+	}
+};
+
+export const addNewPost = (id, timestamp, title, body, owner, category) => ({
+	type: ADD_NEW_POST,
+	postObject: {id, timestamp, title, body, owner, category}
+});
+
+export const editPost = (id, title, body) => ({
+	type: EDIT_POST,
+	postObject: {id, title, body}
+});
+
+export const deletePost = (id) => ({
+	type: DELETE_POST,
+	postObject: {id}
+});
+
+export const upVotePost = (id) => {
+	return (dispatch) => {
+
+		const fetchConfigs = {
+			method: 'POST',
+			headers: {'Authorization': 'key', "Content-Type": "application/json",},
+			body: JSON.stringify({
+				option: "upVote"
+			})
+		};
+
+		fetch(`http://localhost:5001/posts/${id}`, fetchConfigs).then(data => {
+			dispatch({
+				type: UP_VOTE_POST,
+				postObject: {id}
+			})
+		});
+
+
+	}
+};
+
+export const downVotePost = (id) => {
+	return (dispatch) => {
+
+		const fetchConfigs = {
+			method: 'POST',
+			headers: {'Authorization': 'key', "Content-Type": "application/json",},
+			body: JSON.stringify({
+				option: "downVote"
+			})
+		};
+
+		fetch(`http://localhost:5001/posts/${id}`, fetchConfigs).then(data => {
+			dispatch({
+				type: DOWN_VOTE_POST,
+				postObject: {id}
+			})
+		});
+
+
+	}
+};
