@@ -3,7 +3,7 @@ import React from "react";
 function Sort() {
 	return (
 		<div className="sort text-right">
-			<span>Sort by:</span>
+			<span className="m-r-sm">Sort by:</span>
 			<label className="radio-inline">
 				<input type="radio" name="sortPosts" id="sort-by-date" value="date"/>
 				<span>Date</span>

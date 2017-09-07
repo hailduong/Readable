@@ -55,7 +55,7 @@ export const getCategoryPosts = (category) => {
 
 export const getSinglePost = (postID) => {
 	return (dispatch) => {
-		
+
 		const singlePostFetchConfigs = {
 			method: 'GET',
 			headers: {
@@ -76,20 +76,56 @@ export const getSinglePost = (postID) => {
 	}
 };
 
-export const addNewPost = (id, timestamp, title, body, owner, category) => ({
-	type: ADD_NEW_POST,
-	postObject: {id, timestamp, title, body, owner, category}
-});
+export const addNewPost = ({id, timestamp, postTitle, postContent, postAuthor, postCategory} = {}) => {
+	return (dispatch) => {
+
+		const addPostFetchConfigs = {
+			method: 'POST',
+			headers: {
+				'Authorization': 'key',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				id, timestamp,
+				title: postTitle,
+				body: postContent,
+				author: postAuthor,
+				category: postCategory
+			})
+		};
+
+		fetch(`http://localhost:5001/posts`, addPostFetchConfigs)
+			.then(response => response.json())
+			.then(data => {
+				console.log('Single posts fetched', data);
+				dispatch({
+					type: ADD_NEW_POST,
+					postObject: {id, timestamp, postTitle, postContent, postAuthor, postCategory}
+				})
+			});
+	}
+};
 
 export const editPost = (id, title, body) => ({
 	type: EDIT_POST,
 	postObject: {id, title, body}
 });
 
-export const deletePost = (id) => ({
-	type: DELETE_POST,
-	postObject: {id}
-});
+export const deletePost = (id) => {
+	return (dispatch) => {
+		const fetchConfigs = {
+			method: 'DELETE',
+			headers: {'Authorization': 'key', "Content-Type": "application/json"}
+		};
+
+		fetch(`http://localhost:5001/posts/${id}`, fetchConfigs).then(data => {
+			dispatch({
+				type: DELETE_POST,
+				postObject: {id}
+			})
+		});
+	}
+};
 
 export const upVotePost = (id) => {
 	return (dispatch) => {
@@ -130,7 +166,6 @@ export const downVotePost = (id) => {
 				postObject: {id}
 			})
 		});
-
 
 	}
 };

@@ -20,13 +20,26 @@ class ListPage extends React.Component {
 	}
 
 	render() {
+
 		const postsNode = Array.isArray(this.props.posts)
-			&& this.props.posts.map((post, index) => <Post key={index} content={post}/>);
+			&& this.props.posts.map((post, index) => {
+
+				// Only return posts that are not deleted
+				if (!post.deleted) {
+					return <Post key={index} content={post}/>
+				}
+
+			});
+
+		const totalNumberOfPost = this.props.posts.filter((post) => !post.deleted).length;
 
 		return (
 			<div className="container list-page">
 				<div className="col-sm-8">
-					<Sort/>
+					<div className="row m-b-md">
+						<div className="col-sm-6">Total posts: <strong>{totalNumberOfPost}</strong></div>
+						<div className="col-sm-6"><Sort/></div>
+					</div>
 					<div className="global__main-content">
 						{postsNode}
 					</div>

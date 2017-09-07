@@ -1,9 +1,10 @@
 import {combineReducers} from "redux";
 import * as actionsObject from "../actions";
+import {cloneDeep, findIndex} from "lodash";
 
 const initialPostState = [
 	{
-		id: '',
+		id: 'sample',
 		timestamp: 0,
 		title: '',
 		body: '',
@@ -86,6 +87,15 @@ const postReducer = function(state = initialPostState, action) {
 
 		}
 
+		case actionsObject.DELETE_POST: {
+			const indexOfDeletedPost = findIndex(state, (post) => post.id === action.postObject.id);
+			const newState = cloneDeep(state);
+			newState[indexOfDeletedPost].deleted = true;
+			return newState
+		}
+		
+		// TODO: Should we have a case here to add a new post?
+		
 		default:
 			return state;
 	}

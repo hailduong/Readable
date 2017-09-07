@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Navbar from "./components/Navbar";
 import ListPage from "./components/ListPage";
 import PostPage from "./components/PostPage";
+import AddPostPage from "./components/AddPostPage";
 import * as actionsObject from "./actions";
 
 import {BrowserRouter, Route} from 'react-router-dom'
@@ -29,7 +30,7 @@ class App extends Component {
 							/>
 						)
 					}}/>
-					<Route exact path="/:category" render={(props) => {
+					<Route exact path="/:category(react|redux|udacity)" render={(props) => {
 						return (
 							<ListPage getCategoryPosts={getCategoryPosts}
 									  match={props.match}
@@ -38,13 +39,18 @@ class App extends Component {
 							/>
 						)
 					}}/>
-					<Route path="/:category/:post" render={(props) => {
+					<Route exact path="/:category/:post" render={(props) => {
 						return (
 							<PostPage getSinglePost={getSinglePost}
 									  match={props.match}
 									  post={posts}
 									  comments={comments}
 							/>
+						)
+					}}/>
+					<Route exact path="/add-new-post" render={(props) => {
+						return (
+							<AddPostPage addNewPost={this.props.addNewPost}/>
 						)
 					}}/>
 				</div>
@@ -67,6 +73,9 @@ const mapDispatchToProps = (dispatch) => ({
 	},
 	getSinglePost: (postID) => {
 		dispatch(actionsObject.getSinglePost(postID))
+	},
+	addNewPost: ({id, timestamp, postTitle, postContent, postAuthor, postCategory} = {}) => {
+		dispatch(actionsObject.addNewPost({id, timestamp, postTitle, postContent, postAuthor, postCategory}))
 	}
 });
 

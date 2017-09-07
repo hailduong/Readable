@@ -4,7 +4,7 @@ import SideBar from "./SideBar";
 class PostPage extends React.Component {
 
 	render() {
-		
+
 		const {id, timestamp, title, body, author, category, voteScore, deleted, thumbnailURL} = this.props.post[0];
 
 		return (
@@ -16,12 +16,21 @@ class PostPage extends React.Component {
 							<div className="thumbnail">
 								<img className="img-responsive" src={thumbnailURL} alt=""/>
 							</div>
-							<p>Category: <strong>{category}</strong> |
+							<p>
+								Category: <strong>{category}</strong> |
 								Author: <strong>{author}</strong> |
 								VoteScore: <strong>{voteScore}</strong> |
 								Time: <strong>{timestamp}</strong>
 							</p>
 							<p>{body}</p>
+							<div className="btn-group actions m-r-sm" role="group">
+								<button onClick={this.handleUpVote} type="button" className="btn btn-default">Up Vote</button>
+								<button onClick={this.handleDownVote} type="button" className="btn btn-default">Down Vote</button>
+							</div>
+							<div className="btn-group actions" role="group">
+								<button onClick={this.handleEditPost} type="button" className="btn btn-default">Edit</button>
+								<button onClick={this.handleDeletePost} type="button" className="btn btn-default">Delete</button>
+							</div>
 						</div>
 					</div>
 				</div>
