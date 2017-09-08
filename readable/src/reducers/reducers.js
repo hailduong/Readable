@@ -1,5 +1,5 @@
 import {combineReducers} from "redux";
-import * as actionsObject from "../actions";
+import * as actionsObject from "../actions/actions";
 import {cloneDeep, findIndex} from "lodash";
 
 const initialPostState = [

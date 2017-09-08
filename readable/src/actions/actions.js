@@ -106,10 +106,29 @@ export const addNewPost = ({id, timestamp, postTitle, postContent, postAuthor, p
 	}
 };
 
-export const editPost = (id, title, body) => ({
-	type: EDIT_POST,
-	postObject: {id, title, body}
-});
+export const editPost = ({id, title, body}) => {
+	return (dispatch) => {
+		const editPostFetchConfigs = {
+			method: 'PUT',
+			headers: {
+				'Authorization': 'key',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				id, title, body
+			})
+		};
+
+		fetch(`http://localhost:5001/posts/${id}`, editPostFetchConfigs)
+			.then(response => response.json())
+			.then(data => {
+				dispatch({
+					type: EDIT_POST,
+					postObject: {id, title, body}
+				})
+			});
+	}
+};
 
 export const deletePost = (id) => {
 	return (dispatch) => {

@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import Navbar from "./components/Navbar";
 import ListPage from "./components/ListPage";
-import PostPage from "./components/PostPage";
+import PostDetailPage from "./components/PostDetailPage";
 import AddPostPage from "./components/AddPostPage";
-import * as actionsObject from "./actions";
+import EditPostPage from "./components/EditPostPage";
+import * as actionsObject from "./actions/actions";
 
 import {BrowserRouter, Route} from 'react-router-dom'
 
@@ -39,18 +40,27 @@ class App extends Component {
 							/>
 						)
 					}}/>
-					<Route exact path="/:category/:post" render={(props) => {
+					<Route exact path="/:category(react|redux|udacity)/:post" render={(props) => {
 						return (
-							<PostPage getSinglePost={getSinglePost}
-									  match={props.match}
-									  post={posts}
-									  comments={comments}
+							<PostDetailPage getSinglePost={getSinglePost}
+											match={props.match}
+											post={posts}
+											comments={comments}
 							/>
 						)
 					}}/>
 					<Route exact path="/add-new-post" render={(props) => {
 						return (
 							<AddPostPage addNewPost={this.props.addNewPost}/>
+						)
+					}}/>
+					<Route exact path="/edit-post/:postID" render={(props) => {
+						return (
+							<EditPostPage posts={this.props.posts} 
+										  match={props.match} 
+										  editPost={this.props.editPost}
+										  getSinglePost={this.props.getSinglePost}
+							/>
 						)
 					}}/>
 				</div>
@@ -76,6 +86,9 @@ const mapDispatchToProps = (dispatch) => ({
 	},
 	addNewPost: ({id, timestamp, postTitle, postContent, postAuthor, postCategory} = {}) => {
 		dispatch(actionsObject.addNewPost({id, timestamp, postTitle, postContent, postAuthor, postCategory}))
+	},
+	editPost: ({id, title, body}) => {
+		dispatch(actionsObject.editPost({id, title, body}))
 	}
 });
 

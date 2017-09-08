@@ -1,8 +1,8 @@
 import React from "react";
-import * as actionsObject from "../actions";
+import * as actionsObject from "../actions/actions";
+import {Link} from "react-router-dom";
 
 import {connect} from "react-redux";
-
 
 class Post extends React.Component {
 
@@ -27,8 +27,14 @@ class Post extends React.Component {
 
 	render() {
 
-		const {id, timestamp, title, body, author, category, voteScore, deleted, thumbnailURL} = this.props.content;
+		const {id, timestamp, title, body, author, category, voteScore, deleted} = this.props.content;
+		let {thumbnailURL} = this.props.content;
 		const postLink = `/${category}/${id}`;
+
+		const random1To3 = Math.floor(Math.random() * 6) + 1;
+		if (!thumbnailURL) thumbnailURL = `/images/thumbnail_${random1To3}.jpg`;
+
+		const editLink = `/edit-post/${id}`;
 
 		return (
 			<div className="row global__post m-b-xl" data-id={id}>
@@ -47,7 +53,7 @@ class Post extends React.Component {
 						<button onClick={this.handleDownVote} type="button" className="btn btn-default">Down Vote</button>
 					</div>
 					<div className="btn-group" role="group">
-						<button onClick={this.handleEditPost} type="button" className="btn btn-default">Edit</button>
+						<Link to={editLink} onClick={this.handleEditPost} className="btn btn-default">Edit</Link>
 						<button onClick={this.handleDeletePost} type="button" className="btn btn-default">Delete</button>
 					</div>
 				</div>
@@ -71,9 +77,9 @@ const mapDispatchToProps = (dispatch) => ({
 	deletePost: (postID) => {
 		dispatch(actionsObject.deletePost(postID))
 	},
-	editPost: (postID) => {
+	editPost: ({id, title, body}) => {
 		// TODO: Edit Post
-		dispatch(actionsObject.editPost(postID))
+		dispatch(actionsObject.editPost({id, title, body}))
 	}
 });
 
