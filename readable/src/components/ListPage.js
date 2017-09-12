@@ -26,7 +26,7 @@ class ListPage extends React.Component {
 
 				// Only return posts that are not deleted
 				if (!post.deleted) {
-					return <Post key={index} content={post}/>
+					return <Post key={post.id} content={post}/>
 				}
 
 			});
@@ -35,17 +35,19 @@ class ListPage extends React.Component {
 
 		return (
 			<div className="container list-page">
-				<div className="col-sm-8">
-					<div className="row m-b-md">
-						<div className="col-sm-6">Total posts: <strong>{totalNumberOfPost}</strong></div>
-						<div className="col-sm-6"><Sort/></div>
+				<div className="row">
+					<div className="col-sm-8">
+						<div className="row m-b-sm">
+							<div className="col-sm-6">Total posts: <strong>{totalNumberOfPost}</strong></div>
+							<div className="col-sm-6"><Sort/></div>
+						</div>
+						<div className="global__main-content">
+							{postsNode}
+						</div>
 					</div>
-					<div className="global__main-content">
-						{postsNode}
+					<div className="col-sm-4">
+						<SideBar/>
 					</div>
-				</div>
-				<div className="col-sm-4">
-					<SideBar/>
 				</div>
 			</div>
 		)

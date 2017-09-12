@@ -17,18 +17,21 @@ const initialPostState = [
 ];
 
 
-const initialCommentState = [
-	{
-		id: '',
-		parentId: '',
-		timestamp: 0,
-		body: '',
-		author: '',
-		voteScore: 0,
-		deleted: false,
-		parentDeleted: false
-	}
-];
+const initialCommentState = {
+	parentId: [
+		{
+			id: '',
+			parentId: '',
+			timestamp: 0,
+			body: '',
+			author: '',
+			voteScore: 0,
+			deleted: false,
+			parentDeleted: false
+		}
+	]
+
+};
 
 const postReducer = function(state = initialPostState, action) {
 	switch (action.type) {
@@ -93,9 +96,9 @@ const postReducer = function(state = initialPostState, action) {
 			newState[indexOfDeletedPost].deleted = true;
 			return newState
 		}
-		
+
 		// TODO: Should we have a case here to add a new post?
-		
+
 		default:
 			return state;
 	}
@@ -103,6 +106,69 @@ const postReducer = function(state = initialPostState, action) {
 
 const commentReducer = function(state = initialCommentState, action) {
 	switch (action.type) {
+
+		case actionsObject.GET_ALL_COMMENTS: {
+			const {comments, postID} = action;
+			return {
+				...state,
+				[postID]: comments
+			};
+		}
+
+		case actionsObject.GET_SINGLE_COMMENT: {
+			return [action.comment]
+		}
+
+		case actionsObject.UP_VOTE_COMMENT: {
+			const postID = action.postID;
+			const commentID = action.commentID;
+			const newState = JSON.parse(JSON.stringify(state));
+			newState[postID].forEach((comment) => {
+				if (comment.id === commentID) {
+					comment.voteScore++;
+				}
+			});
+
+			return newState;
+		}
+
+		case actionsObject.DOWN_VOTE_COMMENT: {
+			const postID = action.postID;
+			const commentID = action.commentID;
+			const newState = JSON.parse(JSON.stringify(state));
+			newState[postID].forEach((comment) => {
+				if (comment.id === commentID) {
+					comment.voteScore--;
+				}
+			});
+
+			return newState;
+
+		}
+
+		case actionsObject.ADD_NEW_COMMENT: {
+			const newState = JSON.parse(JSON.stringify(state));
+			const newComment = action.commentObject;
+			const parentId = newComment.parentId;
+
+			newComment.deleted = false;
+			newComment.parentDeleted = false;
+			newState[parentId].push(newComment);
+
+			return newState;
+		}
+
+		case actionsObject.DELETE_COMMENT: {
+			
+			const newState = JSON.parse(JSON.stringify(state));
+			const indexOfDeletedComment = newState[action.postID].forEach((comment, index) => {
+				if (comment.id === action.commentID) {
+					comment.deleted = true;
+				}
+			});
+			return newState
+		}
+
 		default:
 			return state;
 	}

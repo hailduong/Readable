@@ -17,7 +17,7 @@ import './App.css';
 class App extends Component {
 	render() {
 
-		const {getAllPosts, getSinglePost, getCategoryPosts, posts, comments} = this.props;
+		const {getAllPosts, getCategoryPosts, posts, comments} = this.props;
 
 		return (
 			<BrowserRouter>
@@ -42,11 +42,7 @@ class App extends Component {
 					}}/>
 					<Route exact path="/:category(react|redux|udacity)/:post" render={(props) => {
 						return (
-							<PostDetailPage getSinglePost={getSinglePost}
-											match={props.match}
-											post={posts}
-											comments={comments}
-							/>
+							<PostDetailPage match={props.match}/>
 						)
 					}}/>
 					<Route exact path="/add-new-post" render={(props) => {
@@ -56,8 +52,8 @@ class App extends Component {
 					}}/>
 					<Route exact path="/edit-post/:postID" render={(props) => {
 						return (
-							<EditPostPage posts={this.props.posts} 
-										  match={props.match} 
+							<EditPostPage posts={this.props.posts}
+										  match={props.match}
 										  editPost={this.props.editPost}
 										  getSinglePost={this.props.getSinglePost}
 							/>
@@ -80,9 +76,6 @@ const mapDispatchToProps = (dispatch) => ({
 	},
 	getCategoryPosts: (category) => {
 		dispatch(actionsObject.getCategoryPosts(category))
-	},
-	getSinglePost: (postID) => {
-		dispatch(actionsObject.getSinglePost(postID))
 	},
 	addNewPost: ({id, timestamp, postTitle, postContent, postAuthor, postCategory} = {}) => {
 		dispatch(actionsObject.addNewPost({id, timestamp, postTitle, postContent, postAuthor, postCategory}))
