@@ -2,11 +2,22 @@ import React from "react";
 import SideBar from "./SideBar";
 import Sort from "./Sort";
 import Post from "./Post";
+import sortBy from "sort-by";
 
 
 class ListPage extends React.Component {
 
+	constructor() {
+		super();
+
+		this.state = {
+			sort: "-timestamp"
+		}
+	}
+
 	componentWillReceiveProps(nextProps) {
+
+		// Set All-Posts / Category-Posts
 		if (!!this.props.match) {
 
 			const currentMatchedCategory = this.props.match.params.category;
@@ -19,17 +30,36 @@ class ListPage extends React.Component {
 
 	}
 
+	sort = (sortOrder) => {
+		this.setState({
+			sort: sortOrder
+		});
+	};
+
 	render() {
 
-		const postsNode = Array.isArray(this.props.posts)
-			&& this.props.posts.map((post, index) => {
+		const sortOrder = this.state.sort;
 
-				// Only return posts that are not deleted
-				if (!post.deleted) {
-					return <Post key={post.id} content={post}/>
-				}
 
-			});
+		const postsNode = (() => {
+
+			if (Array.isArray(this.props.posts)) {
+				console.log(sortOrder)
+				const sortedPosts = this.props.posts.sort(sortBy(sortOrder));
+
+				return sortedPosts.map((post, index) => {
+
+					// Only return posts that are not deleted
+					if (!post.deleted) {
+						return <Post key={post.id} content={post}/>
+					}
+
+				});
+			}
+
+			return null;
+		})();
+
 
 		const totalNumberOfPost = this.props.posts.filter((post) => !post.deleted).length;
 
@@ -39,7 +69,7 @@ class ListPage extends React.Component {
 					<div className="col-sm-8">
 						<div className="row m-b-sm">
 							<div className="col-sm-6">Total posts: <strong>{totalNumberOfPost}</strong></div>
-							<div className="col-sm-6"><Sort/></div>
+							<div className="col-sm-6"><Sort sort={this.sort}/></div>
 						</div>
 						<div className="global__main-content">
 							{postsNode}

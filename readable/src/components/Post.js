@@ -1,6 +1,7 @@
 import React from "react";
 import * as actionsObject from "../actions/actions";
 import {Link} from "react-router-dom";
+import moment from "moment";
 
 import {connect} from "react-redux";
 
@@ -43,6 +44,7 @@ class Post extends React.Component {
 		})();
 		
 		const numberOfComments = postComments.length;
+		const formattedDate = moment(timestamp).format("MMM DD YYYY"); 
 
 		return (
 			<div className="clearfix global__post m-b-xl" data-id={id}>
@@ -53,7 +55,7 @@ class Post extends React.Component {
 					<h3 className="m-t-none"><a href={postLink}>{title}</a></h3>
 					<p>{body}</p>
 					<p>Vote: <strong>{voteScore}</strong> |
-						Date: <strong>{timestamp}</strong> |
+						Date: <strong>{formattedDate}</strong> |
 						Category: <strong>{category}</strong> |
 						Comments: <strong>{numberOfComments}</strong>
 					</p>

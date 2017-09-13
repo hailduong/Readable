@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import {Redirect} from 'react-router';
 import CommentList from "./CommentList";
+import moment from "moment";
 
 class PostPage extends React.Component {
 
@@ -32,13 +33,7 @@ class PostPage extends React.Component {
 		const {id, timestamp, title, body, author, category, voteScore, deleted, thumbnailURL} = this.props.posts[0];
 		const editLink = `/edit-post/${id}`;
 		const paramPostID = this.props.match.params.post;
-		//const postComments = (() => {
-		//	if (!!this.props.comments[id]) {
-		//		return this.props.comments[id];
-		//	}
-		//	return [];
-		//})();
-		//const numberOfComments = postComments.length;
+		const formattedDate = moment(timestamp).format("MMM DD YYYY");
 
 		// Redirect to home page if the post is deleted;
 		if (!id || deleted) {
@@ -47,6 +42,7 @@ class PostPage extends React.Component {
 			)
 		}
 
+		
 		// Otherwise, just render it.
 		return (
 			<div className="container post-page">
@@ -61,7 +57,7 @@ class PostPage extends React.Component {
 								Category: <strong>{category}</strong> |
 								Author: <strong>{author}</strong> |
 								VoteScore: <strong>{voteScore}</strong> |
-								Time: <strong>{timestamp}</strong>
+								Time: <strong>{formattedDate}</strong>
 							</p>
 							<p>{body}</p>
 							<div className="btn-group actions m-r-sm" role="group">
