@@ -261,7 +261,7 @@ export const addNewComment = ({id, timestamp, body, author, parentId}) => {
 			});
 	}
 };
-export const editComment = ({id, timestamp, body}) => {
+export const editComment = ({id, timestamp, body, parentId}) => {
 	return (dispatch) => {
 		const fetchConfigs = {
 			method: 'PUT',
@@ -279,7 +279,7 @@ export const editComment = ({id, timestamp, body}) => {
 			.then(data => {
 				dispatch({
 					type: EDIT_COMMENT,
-					commentObject: {id, timestamp, body}
+					commentObject: {id, timestamp, body, parentId}
 				})
 			});
 	}

@@ -26,14 +26,12 @@ class CommentList extends React.Component {
 	render() {
 
 		const postID = this.props.postID;
-
 		const comments = (() => {
 			if (!!this.props.comments[postID]) {
 				return this.props.comments[postID].filter(comment => comment.deleted !== true);
 			}
 			return [];
 		})();
-
 		const numberOfComments = comments.length;
 
 		const addCommentForm = (
@@ -45,6 +43,7 @@ class CommentList extends React.Component {
 				</form>
 			</div>
 		);
+
 
 		// If there is no comment, render the add form.
 		if (numberOfComments === 0) {
@@ -61,10 +60,12 @@ class CommentList extends React.Component {
 		}
 
 		// Otherwise, render comment list with the add form
+		//TODO: add edit comment
 		const actions = {
 			upVoteComment: this.props.upVoteComment,
 			downVoteComment: this.props.downVoteComment,
-			deleteComment: this.props.deleteComment
+			deleteComment: this.props.deleteComment,
+			editComment: this.props.editComment
 		};
 
 		const commentNodes = comments.map((comment) => <Comment actions={actions}
@@ -111,6 +112,9 @@ const mapDispatchToProps = (dispatch) => ({
 	},
 	addComment: ({id, timestamp, body, author, parentId}) => {
 		dispatch(actionsObject.addNewComment({id, timestamp, body, author, parentId}))
+	},
+	editComment: ({id, timestamp, body, parentId}) => {
+		dispatch(actionsObject.editComment({id, timestamp, body, parentId}))
 	}
 });
 

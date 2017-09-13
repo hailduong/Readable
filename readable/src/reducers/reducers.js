@@ -158,8 +158,23 @@ const commentReducer = function(state = initialCommentState, action) {
 			return newState;
 		}
 
-		case actionsObject.DELETE_COMMENT: {
+		case actionsObject.EDIT_COMMENT: {
+			const newState = JSON.parse(JSON.stringify(state));
+
+			const {id, timestamp, body, parentId} = action.commentObject;
 			
+			newState[parentId].forEach((comment) => {
+				if (comment.id === id) {
+					comment.body = body;
+					comment.timestamp = timestamp;
+				}
+			});
+
+			return newState
+		}
+
+		case actionsObject.DELETE_COMMENT: {
+
 			const newState = JSON.parse(JSON.stringify(state));
 			const indexOfDeletedComment = newState[action.postID].forEach((comment, index) => {
 				if (comment.id === action.commentID) {
