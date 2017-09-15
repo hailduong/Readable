@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 const Navbar = function() {
 	return (
-		<nav className="navbar navbar-default global__navbar">
+		<nav className="navbar navbar-default navbar-fixed-top global__navbar">
 			<div className="container-fluid">
 				<div className="navbar-header">
 					<Link  className="navbar-brand" to="/"><i className="fa fa-bookmark"></i> Readable</Link>
