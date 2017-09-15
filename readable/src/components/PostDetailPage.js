@@ -30,10 +30,14 @@ class PostPage extends React.Component {
 
 	render() {
 
-		const {id, timestamp, title, body, author, category, voteScore, deleted, thumbnailURL} = this.props.posts[0];
+		const {id, timestamp, title, body, author, category, voteScore, deleted} = this.props.posts[0];
 		const editLink = `/edit-post/${id}`;
 		const paramPostID = this.props.match.params.post;
 		const formattedDate = moment(timestamp).format("MMM DD YYYY");
+
+		let {thumbnailURL} = this.props.posts[0];
+		const random1To3 = Math.floor(Math.random() * 3) + 1;
+		if (!thumbnailURL) thumbnailURL = `/images/thumbnail_${random1To3}.jpg`;
 
 		// Redirect to home page if the post is deleted;
 		if (!id || deleted) {
@@ -42,14 +46,14 @@ class PostPage extends React.Component {
 			)
 		}
 
-		
+
 		// Otherwise, just render it.
 		return (
 			<div className="container post-page">
 				<div className="col-sm-8">
 					<div className="global__main-content">
 						<div className="post">
-							<h3>{title}</h3>
+							<h3 className="m-t-none">{title}</h3>
 							<div className="thumbnail">
 								<img className="img-responsive" src={thumbnailURL} alt=""/>
 							</div>
@@ -72,7 +76,8 @@ class PostPage extends React.Component {
 						<CommentList postID={paramPostID}/>
 					</div>
 				</div>
-				<div className="col-sm-4">
+				<div className="col-sm-1"></div>
+				<div className="col-sm-3">
 					<SideBar/>
 				</div>
 			</div>

@@ -30,7 +30,7 @@ class Post extends React.Component {
 
 		const {id, timestamp, title, body, author, category, voteScore, deleted} = this.props.content;
 		let {thumbnailURL} = this.props.content;
-		const random1To3 = Math.floor(Math.random() * 6) + 1;
+		const random1To3 = Math.floor(Math.random() * 3) + 1;
 		if (!thumbnailURL) thumbnailURL = `/images/thumbnail_${random1To3}.jpg`;
 
 		const postLink = `/${category}/${id}`;
@@ -47,12 +47,12 @@ class Post extends React.Component {
 		const formattedDate = moment(timestamp).format("MMM DD YYYY"); 
 
 		return (
-			<div className="clearfix global__post m-b-xl" data-id={id}>
+			<div className="clearfix global__post m-b-xl animated fadeIn" data-id={id}>
 				<div className="col-sm-4 thumbnail">
 					<img className="img-responsive" src={thumbnailURL}/>
 				</div>
 				<div className="col-sm-8 caption">
-					<h3 className="m-t-none"><a href={postLink}>{title}</a></h3>
+					<h3 className="m-t-none"><a className="post-title" href={postLink}>{title}</a></h3>
 					<p>{body}</p>
 					<p>Vote: <strong>{voteScore}</strong> |
 						Date: <strong>{formattedDate}</strong> |

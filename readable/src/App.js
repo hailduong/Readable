@@ -47,13 +47,14 @@ class App extends Component {
 					}}/>
 					<Route exact path="/add-new-post" render={(props) => {
 						return (
-							<AddPostPage addNewPost={this.props.addNewPost}/>
+							<AddPostPage addNewPost={this.props.addNewPost} history={props.history}/>
 						)
 					}}/>
 					<Route exact path="/edit-post/:postID" render={(props) => {
 						return (
 							<EditPostPage posts={this.props.posts}
 										  match={props.match}
+										  history={props.history}
 										  editPost={this.props.editPost}
 										  getSinglePost={this.props.getSinglePost}
 							/>

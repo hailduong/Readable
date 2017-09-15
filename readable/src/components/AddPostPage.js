@@ -14,12 +14,13 @@ class AddPostPage extends React.Component {
 
 		};
 
-		this.props.addNewPost(postObject)
+		this.props.addNewPost(postObject);
+		this.props.history.push('/')
 	};
 
 	render() {
 		return (
-			<div className="container">
+			<div className="container animated fadeIn">
 				<div className="col-sm-12">
 					<h1>Add a new post</h1>
 					<PostForm handleFormSubmit={this.handleFormSubmit}/>

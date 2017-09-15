@@ -10,7 +10,8 @@ class EditPostPage extends React.Component {
 		const title = formObject.postTitle;
 		const body = formObject.postContent;
 		const postID = this.props.match.params.postID;
-		this.props.editPost({id: postID, title, body})
+		this.props.editPost({id: postID, title, body});
+		this.props.history.go(-1);
 	};
 
 	render() {
@@ -19,7 +20,7 @@ class EditPostPage extends React.Component {
 		const thisPostObject = this.props.posts.filter((post) => post.id === postID)[0];
 
 		return (
-			<div className="container">
+			<div className="container animated fadeIn">
 				<div className="col-sm-12">
 					<h1>Edit Post</h1>
 					<PostForm post={thisPostObject} 

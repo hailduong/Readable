@@ -13,16 +13,16 @@ class Sort extends React.Component {
 
 	render() {
 		return (
-			<div className="sort text-right">
+			<div className="sort text-right awe-check">
 				<span className="m-r-sm">Sort by:</span>
-				<label className="radio-inline">
+				<div className="radio-inline radio radio-success">
 					<input defaultChecked={true} type="radio" onClick={this.sortByDate} name="sortPosts" id="sort-by-date" value="date"/>
-					<span>Date</span>
-				</label>
-				<label className="radio-inline">
+					<label htmlFor="sort-by-date">Date</label>
+				</div>
+				<div className="radio-inline radio radio-success">
 					<input type="radio" onClick={this.sortByScore} name="sortPosts" id="sort-by-score" value="score"/>
-					<span>Score</span>
-				</label>
+					<label htmlFor="sort-by-score">Score</label>
+				</div>
 			</div>
 		)
 	}

@@ -39,7 +39,7 @@ class CommentList extends React.Component {
 				<form onSubmit={this.handleAddComment} name="formAddComment">
 					<input name="author" type="text" className="form-control m-b-sm" placeholder="Your name"/>
 					<textarea name="body" className="form-control m-b-sm" rows="5" placeholder="Comment"></textarea>
-					<button type="submit" className="btn btn-primary btn-sm">Add</button>
+					<button type="submit" className="btn btn-primary btn-sm">Add Comment</button>
 				</form>
 			</div>
 		);

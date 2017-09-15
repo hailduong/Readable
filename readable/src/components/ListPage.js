@@ -67,7 +67,7 @@ class ListPage extends React.Component {
 			<div className="container list-page">
 				<div className="row">
 					<div className="col-sm-8">
-						<div className="row m-b-sm">
+						<div className="row m-b-lg">
 							<div className="col-sm-6">Total posts: <strong>{totalNumberOfPost}</strong></div>
 							<div className="col-sm-6"><Sort sort={this.sort}/></div>
 						</div>
@@ -75,7 +75,8 @@ class ListPage extends React.Component {
 							{postsNode}
 						</div>
 					</div>
-					<div className="col-sm-4">
+					<div className="col-sm-1"></div>
+					<div className="col-sm-3">
 						<SideBar/>
 					</div>
 				</div>
