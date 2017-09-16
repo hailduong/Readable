@@ -49,7 +49,7 @@ class PostPage extends React.Component {
 
 		// Otherwise, just render it.
 		return (
-			<div className="container post-page">
+			<div className="container post-page animated fadeIn">
 				<div className="col-sm-8">
 					<div className="global__main-content">
 						<div className="post">
