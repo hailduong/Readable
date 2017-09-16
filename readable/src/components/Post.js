@@ -30,8 +30,8 @@ class Post extends React.Component {
 
 		const {id, timestamp, title, body, author, category, voteScore, deleted} = this.props.content;
 		let {thumbnailURL} = this.props.content;
-		const random1To3 = Math.floor(Math.random() * 3) + 1;
-		if (!thumbnailURL) thumbnailURL = `/images/thumbnail_${random1To3}.jpg`;
+		const randomNumber = Math.floor(Math.random() * 8) + 1;
+		if (!thumbnailURL) thumbnailURL = `/images/${randomNumber}.jpg`;
 
 		const postLink = `/${category}/${id}`;
 		const editLink = `/edit-post/${id}`;

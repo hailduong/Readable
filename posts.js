@@ -11,8 +11,7 @@ const defaultData = {
 		author: 'Paul Boag',
 		category: 'react',
 		voteScore: 6,
-		deleted: false,
-		thumbnailURL: "/images/thumbnail_1.jpg"
+		deleted: false
 	},
 	"6ni6ok3ym7mf1p33lnez": {
 		id: '6ni6ok3ym7mf1p33lnez',
@@ -22,8 +21,7 @@ const defaultData = {
 		author: 'thingone',
 		category: 'react',
 		voteScore: 5,
-		deleted: false,
-		thumbnailURL: "/images/thumbnail_2.jpg"
+		deleted: false
 	},
 	"6ni6ok3ym7mf1p33lnez1": {
 		id: '6ni6ok3ym7mf1p33lnez1',
@@ -33,8 +31,7 @@ const defaultData = {
 		author: 'thingone',
 		category: 'udacity',
 		voteScore: 45,
-		deleted: false,
-		thumbnailURL: "/images/thumbnail_3.jpg"
+		deleted: false
 	},
 	"6ni6ok3ym7mf1p33lnez2": {
 		id: '6ni6ok3ym7mf1p33lnez2',
@@ -44,8 +41,7 @@ const defaultData = {
 		author: 'thingone',
 		category: 'redux',
 		voteScore: 13,
-		deleted: false,
-		thumbnailURL: "/images/thumbnail_1.jpg"
+		deleted: false
 	},
 	"6ni6ok3ym7mf1p33lnez3": {
 		id: '6ni6ok3ym7mf1p33lnez3',
@@ -55,8 +51,7 @@ const defaultData = {
 		author: 'thingone',
 		category: 'udacity',
 		voteScore: 24,
-		deleted: false,
-		thumbnailURL: "/images/thumbnail_2.jpg"
+		deleted: false
 	},
 	"6ni6ok3ym7mf1p33lnez4": {
 		id: '6ni6ok3ym7mf1p33lnez4',
@@ -66,8 +61,7 @@ const defaultData = {
 		author: 'thingone',
 		category: 'react',
 		voteScore: 56,
-		deleted: false,
-		thumbnailURL: "/images/thumbnail_3.jpg"
+		deleted: false
 	},
 	"6ni6ok3ym7mf1p33lnez5": {
 		id: '6ni6ok3ym7mf1p33lnez5',
@@ -77,8 +71,7 @@ const defaultData = {
 		author: 'thingone',
 		category: 'react',
 		voteScore: 32,
-		deleted: false,
-		thumbnailURL: "/images/thumbnail_1.jpg"
+		deleted: false
 	},
 	"6ni6ok3ym7mf1p33lnez6": {
 		id: '6ni6ok3ym7mf1p33lnez6',
@@ -88,8 +81,7 @@ const defaultData = {
 		author: 'thingone',
 		category: 'redux',
 		voteScore: 11,
-		deleted: false,
-		thumbnailURL: "/images/thumbnail_2.jpg"
+		deleted: false
 	},
 	"6ni6ok3ym7mf1p33lnez7": {
 		id: '6ni6ok3ym7mf1p33lnez7',
@@ -99,8 +91,7 @@ const defaultData = {
 		author: 'thingone',
 		category: 'redux',
 		voteScore: -5,
-		deleted: false,
-		thumbnailURL: "/images/thumbnail_3.jpg"
+		deleted: false
 	},
 	"6ni6ok3ym7mf1p33lnez8": {
 		id: '6ni6ok3ym7mf1p33lnez8',
@@ -110,8 +101,7 @@ const defaultData = {
 		author: 'thingone',
 		category: 'redux',
 		voteScore: 9,
-		deleted: false,
-		thumbnailURL: "/images/thumbnail_1.jpg"
+		deleted: false
 	}
 };
 

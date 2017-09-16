@@ -36,8 +36,8 @@ class PostPage extends React.Component {
 		const formattedDate = moment(timestamp).format("MMM DD YYYY");
 
 		let {thumbnailURL} = this.props.posts[0];
-		const random1To3 = Math.floor(Math.random() * 3) + 1;
-		if (!thumbnailURL) thumbnailURL = `/images/thumbnail_${random1To3}.jpg`;
+		const randomNumber = Math.floor(Math.random() * 8) + 1;
+		if (!thumbnailURL) thumbnailURL = `/images/${randomNumber}.jpg`;
 
 		// Redirect to home page if the post is deleted;
 		if (!id || deleted) {
