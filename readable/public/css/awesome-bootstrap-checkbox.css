@@ -1,0 +1,47 @@
+.awe-check .checkbox{padding-left:20px}
+.awe-check .checkbox label{display:inline-block;vertical-align:middle;position:relative;padding-left:5px}
+.awe-check .checkbox label::before{content:"";display:inline-block;position:absolute;width:17px;height:17px;left:0;margin-left:-20px;border:1px solid #ccc;border-radius:3px;background-color:#fff;-webkit-transition:border .3s ease-in-out,color .3s ease-in-out;transition:border .3s ease-in-out,color .3s ease-in-out}
+.awe-check .checkbox label::after{content:"";display:inline-block;position:absolute;width:16px;height:16px;left:0;top:0;margin-left:-20px;padding-left:3px;padding-top:1px;font-size:11px;color:#777}
+.awe-check .checkbox input[type=checkbox],.awe-check .checkbox input[type=radio]{opacity:0;z-index:1}
+.awe-check .checkbox input[type=checkbox]:checked+label::after,.awe-check .checkbox input[type=radio]:checked+label::after{font-family:FontAwesome;content:"\f00c"}
+.awe-check .checkbox input[type=checkbox]:disabled+label,.awe-check .checkbox input[type=radio]:disabled+label{opacity:.65}
+.awe-check .checkbox input[type=checkbox]:disabled+label::before,.awe-check .checkbox input[type=radio]:disabled+label::before{background-color:#eee;cursor:not-allowed}
+.awe-check .checkbox.checkbox-circle label::before{border-radius:50%}
+.awe-check .checkbox.checkbox-inline{margin-top:0}
+.awe-check .checkbox-primary input[type=checkbox]:checked+label::before,.awe-check .checkbox-primary input[type=radio]:checked+label::before{background-color:#fff;border-color:#9c27b0}
+.awe-check .checkbox-primary input[type=checkbox]:checked+label::after,.awe-check .checkbox-primary input[type=radio]:checked+label::after{color:#9c27b0}
+.awe-check .checkbox-danger input[type=checkbox]:checked+label::before,.awe-check .checkbox-danger input[type=radio]:checked+label::before{background-color:#fff;border-color:#f44336}
+.awe-check .checkbox-danger input[type=checkbox]:checked+label::after,.awe-check .checkbox-danger input[type=radio]:checked+label::after{color:#f44336}
+.awe-check .checkbox-info input[type=checkbox]:checked+label::before,.awe-check .checkbox-info input[type=radio]:checked+label::before{background-color:#fff;border-color:#03a9f4}
+.awe-check .checkbox-info input[type=checkbox]:checked+label::after,.awe-check .checkbox-info input[type=radio]:checked+label::after{color:#03a9f4}
+.awe-check .checkbox-warning input[type=checkbox]:checked+label::before,.awe-check .checkbox-warning input[type=radio]:checked+label::before{background-color:#fff;border-color:#fbc02d}
+.awe-check .checkbox-warning input[type=checkbox]:checked+label::after,.awe-check .checkbox-warning input[type=radio]:checked+label::after{color:#fbc02d}
+.awe-check .checkbox-success input[type=checkbox]:checked+label::before,.awe-check .checkbox-success input[type=radio]:checked+label::before{background-color:#fff;border-color:#4caf50}
+.awe-check .checkbox-success input[type=checkbox]:checked+label::after,.awe-check .checkbox-success input[type=radio]:checked+label::after{color:#4caf50}
+.awe-check .radio{padding-left:20px}
+.awe-check .radio label{display:inline-block;vertical-align:middle;position:relative;padding-left:5px}
+.awe-check .radio label::before{content:"";display:inline-block;position:absolute;width:17px;height:17px;left:0;margin-left:-20px;border:1px solid #ccc;border-radius:50%;background-color:#fff;-webkit-transition:border .3s ease-in-out;transition:border .3s ease-in-out}
+.awe-check .radio label::after{display:inline-block;position:absolute;content:" ";width:11px;height:11px;left:3px;top:3px;margin-left:-20px;border-radius:50%;background-color:#777;-webkit-transform:scale(0,0);-ms-transform:scale(0,0);transform:scale(0,0);-webkit-transition:-webkit-transform .3s cubic-bezier(.8,-.33,.2,1.33);-moz-transition:-moz-transform .3s cubic-bezier(.8,-.33,.2,1.33);-o-transition:-o-transform .3s cubic-bezier(.8,-.33,.2,1.33);transition:transform .3s cubic-bezier(.8,-.33,.2,1.33)}
+.awe-check .radio input[type=radio]{opacity:0;z-index:1}
+.awe-check .radio input[type=radio]:checked+label::after{-webkit-transform:scale(1,1);-ms-transform:scale(1,1);transform:scale(1,1)}
+.awe-check .radio input[type=radio]:disabled+label{opacity:.65}
+.awe-check .radio input[type=radio]:disabled+label::before{cursor:not-allowed}
+.awe-check .radio.radio-inline{margin-top:0}
+.awe-check .radio-primary input[type=radio]+label::after{background-color:#9c27b0}
+.awe-check .radio-primary input[type=radio]:checked+label::before{border-color:#9c27b0}
+.awe-check .radio-primary input[type=radio]:checked+label::after{background-color:#9c27b0}
+.awe-check .radio-danger input[type=radio]+label::after{background-color:#f44336}
+.awe-check .radio-danger input[type=radio]:checked+label::before{border-color:#f44336}
+.awe-check .radio-danger input[type=radio]:checked+label::after{background-color:#f44336}
+.awe-check .radio-info input[type=radio]+label::after{background-color:#03a9f4}
+.awe-check .radio-info input[type=radio]:checked+label::before{border-color:#03a9f4}
+.awe-check .radio-info input[type=radio]:checked+label::after{background-color:#03a9f4}
+.awe-check .radio-warning input[type=radio]+label::after{background-color:#fbc02d}
+.awe-check .radio-warning input[type=radio]:checked+label::before{border-color:#fbc02d}
+.awe-check .radio-warning input[type=radio]:checked+label::after{background-color:#fbc02d}
+.awe-check .radio-success input[type=radio]+label::after{background-color:#4caf50}
+.awe-check .radio-success input[type=radio]:checked+label::before{border-color:#4caf50}
+.awe-check .radio-success input[type=radio]:checked+label::after{background-color:#4caf50}
+.awe-check input[type=checkbox].styled:checked+label:after,.awe-check input[type=radio].styled:checked+label:after{font-family:FontAwesome;content:"\f00c"}
+.awe-check input[type=checkbox] .styled:checked+label::before,.awe-check input[type=radio] .styled:checked+label::before{color:#fff}
+.awe-check input[type=checkbox] .styled:checked+label::after,.awe-check input[type=radio] .styled:checked+label::after{color:#fff}/*# sourceMappingURL=awesome-bootstrap-checkbox.css.map */
