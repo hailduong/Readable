@@ -16,9 +16,9 @@ class PostForm extends React.Component {
 				</div>
 				<div className="form-group">
 					<label htmlFor="postAuthor">Category</label>
-					<select defaultValue="redux" name="postCategory" id="postCategory" className="form-control">
+					<select name="postCategory" id="postCategory" className="form-control">
 						<option value="react">React</option>
-						<option value="redux">Redux</option>
+						<option selected value="redux">Redux</option>
 						<option value="udacity">Udacity</option>
 					</select>
 				</div>

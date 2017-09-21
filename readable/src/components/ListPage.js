@@ -44,7 +44,6 @@ class ListPage extends React.Component {
 		const postsNode = (() => {
 
 			if (Array.isArray(this.props.posts)) {
-				console.log(sortOrder)
 				const sortedPosts = this.props.posts.sort(sortBy(sortOrder));
 
 				return sortedPosts.map((post, index) => {
