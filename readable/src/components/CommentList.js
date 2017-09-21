@@ -20,6 +20,8 @@ class CommentList extends React.Component {
 		};
 
 		this.props.addComment(commentObject);
+		
+		// Clear the comment form after adding the comment
 		event.target.reset();
 	};
 
