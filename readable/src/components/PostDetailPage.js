@@ -106,7 +106,6 @@ const mapDispatchToProps = (dispatch) => ({
 		dispatch(actionsObject.deletePost(postID))
 	},
 	editPost: ({id, title, body}) => {
-		// TODO: Edit Post
 		dispatch(actionsObject.editPost({id, title, body}))
 	},
 	getSinglePost: (postID) => {

@@ -1,5 +1,5 @@
 import React from "react";
-import PostForm from "./PostForm";
+import EditForm from "./EditForm";
 import serialize from "form-serialize"
 
 class EditPostPage extends React.Component {
@@ -17,20 +17,27 @@ class EditPostPage extends React.Component {
 	render() {
 
 		const postID = this.props.match.params.postID;
-		const thisPostObject = this.props.posts.filter((post) => post.id === postID)[0];
-
+		const thisPostObject = this.props.posts.filter((post) => post.id.toString() === postID)[0];
+		
 		return (
 			<div className="container animated fadeIn">
 				<div className="col-sm-12">
 					<h1>Edit Post</h1>
-					<PostForm post={thisPostObject} 
+					<EditForm post={thisPostObject}
 							  postID={postID}
 							  handleFormSubmit={this.handleFormSubmit}
-							  getSinglePost={this.props.getSinglePost}
 					/>
 				</div>
 			</div>
 		)
+	}
+
+	componentDidMount() {
+		const postID = this.props.match.params.postID;
+		const thisPostObject = this.props.posts.filter((post) => post.id === postID)[0];
+		if (!thisPostObject) {
+			this.props.getSinglePost(postID)
+		}
 	}
 }
 

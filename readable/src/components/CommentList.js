@@ -20,7 +20,7 @@ class CommentList extends React.Component {
 		};
 
 		this.props.addComment(commentObject);
-
+		event.target.reset();
 	};
 
 	render() {

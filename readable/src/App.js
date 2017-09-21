@@ -72,6 +72,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+	getSinglePost: (postID) => {
+		dispatch(actionsObject.getSinglePost(postID))
+	},
 	getAllPosts: () => {
 		dispatch(actionsObject.getAllPosts())
 	},
