@@ -1,5 +1,5 @@
 import React from "react";
-import PostForm from "./PostForm";
+import PostForm from "./PostAddForm";
 import serialize from "form-serialize"
 
 class AddPostPage extends React.Component {

@@ -1,7 +1,7 @@
 import React from "react";
-import SideBar from "./SideBar";
-import Sort from "./Sort";
-import Post from "./Post";
+import SideBar from "../global/SideBar";
+import Sort from "../global/Sort";
+import Post from "./PostItem";
 import sortBy from "sort-by";
 
 

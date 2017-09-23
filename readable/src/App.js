@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import Navbar from "./components/Navbar";
-import ListPage from "./components/ListPage";
-import PostDetailPage from "./components/PostDetailPage";
-import AddPostPage from "./components/AddPostPage";
-import EditPostPage from "./components/EditPostPage";
-import * as actionsObject from "./actions/actions";
+import Navbar from "./global/Navbar";
+import ListPage from "./posts/PostListPage";
+import PostDetailPage from "./posts/PostDetailPage";
+import AddPostPage from "./posts/PostAddPage";
+import EditPostPage from "./posts/PostEditPage";
+import * as actionsObject from "./posts/PostActions";
 
 import {BrowserRouter, Route} from 'react-router-dom'
 
@@ -66,9 +66,8 @@ class App extends Component {
 	}
 }
 
-const mapStateToProps = (state) => ({
-	posts: state.posts,
-	comments: state.comments
+const mapStateToProps = ({posts, comments}) => ({
+	posts, comments
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -26,7 +26,7 @@ class PostForm extends React.Component {
 					<label htmlFor="postAuthor">Author</label>
 					<input type="text" name="postAuthor" className="form-control" id="postAuthor" placeholder="Post Author"/>
 				</div>
-				<button type="submit" className="btn btn-primary">Submit Changes</button>
+				<button type="submit" className="btn btn-primary">Add Post</button>
 			</form>
 		)
 	}

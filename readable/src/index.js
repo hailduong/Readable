@@ -10,7 +10,7 @@ import './index.css';
 // Import Redux
 import {createStore, compose, applyMiddleware} from "redux";
 import {Provider} from "react-redux";
-import reducers from "./reducers/reducers";
+import reducers from "./global/reducers";
 import ReduxThunk from 'redux-thunk';
 
 const reduxDevTool = window.__REDUX_DEVTOOLS_EXTENSION__

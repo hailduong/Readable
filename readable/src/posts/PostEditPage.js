@@ -1,5 +1,5 @@
 import React from "react";
-import EditForm from "./EditForm";
+import EditForm from "./PostEditForm";
 import serialize from "form-serialize"
 
 class EditPostPage extends React.Component {

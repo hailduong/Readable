@@ -1,7 +1,7 @@
 import React from "react";
-import Comment from "./Comment";
+import Comment from "./CommentItem";
 import {connect} from "react-redux";
-import * as actionsObject from "../actions/actions";
+import * as actionsObject from "./CommentActions";
 import serialize from "form-serialize";
 
 class CommentList extends React.Component {

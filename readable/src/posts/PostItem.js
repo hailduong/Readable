@@ -1,5 +1,6 @@
 import React from "react";
-import * as actionsObject from "../actions/actions";
+import * as actionsObject from "./PostActions";
+import * as commentActionsObject from "../comments/CommentActions"
 import {Link} from "react-router-dom";
 import moment from "moment";
 
@@ -42,9 +43,9 @@ class Post extends React.Component {
 			}
 			return [];
 		})();
-		
+
 		const numberOfComments = postComments.length;
-		const formattedDate = moment(timestamp).format("MMM DD YYYY"); 
+		const formattedDate = moment(timestamp).format("MMM DD YYYY");
 
 		return (
 			<div className="clearfix global__post m-b-xl animated fadeIn" data-id={id}>
@@ -55,9 +56,9 @@ class Post extends React.Component {
 					<h3 className="m-t-none"><a className="post-title" href={postLink}>{title}</a></h3>
 					<p>{body}</p>
 					<p>Vote: <strong>{voteScore}</strong> |
-						Date: <strong>{formattedDate}</strong> |
-						Category: <strong>{category}</strong> |
-						Comments: <strong>{numberOfComments}</strong>
+					   Date: <strong>{formattedDate}</strong> |
+					   Category: <strong>{category}</strong> |
+					   Comments: <strong>{numberOfComments}</strong>
 					</p>
 					<div className="btn-group m-r-sm" role="group">
 						<button onClick={this.handleUpVote} type="button" className="btn btn-default">Up Vote</button>
@@ -98,7 +99,7 @@ const mapDispatchToProps = (dispatch) => ({
 		dispatch(actionsObject.editPost({id, title, body}))
 	},
 	getAllComments: (postID) => {
-		dispatch(actionsObject.getAllComments(postID))
+		dispatch(commentActionsObject.getAllComments(postID))
 	}
 });
 

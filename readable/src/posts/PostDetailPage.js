@@ -1,10 +1,10 @@
 import React from "react";
-import SideBar from "./SideBar";
-import * as actionsObject from "../actions/actions";
+import SideBar from "../global/SideBar";
+import * as actionsObject from "./PostActions";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import {Redirect} from 'react-router';
-import CommentList from "./CommentList";
+import CommentList from "../comments/CommentList";
 import moment from "moment";
 
 class PostPage extends React.Component {
